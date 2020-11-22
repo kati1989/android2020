@@ -2,13 +2,16 @@ package com.example.foodfinder
 
 import androidx.room.Dao
 import androidx.room.Query
+import androidx.room.Transaction
 
 @Dao
 interface RestaurantDao {
 
-    @Query("SELECT * FROM profile_restaurant")
+    @Transaction
+    @Query("SELECT * FROM ProfileEntity")
     fun getProfileFavoriteRestaurants(): List<ProfileFavoriteRestaurants>
 
-    @Query("SELECT * FROM restaurant_table")
+    @Transaction
+    @Query("SELECT * FROM Restaurant")
     fun getAllRestaurants() : List<Restaurant>
 }

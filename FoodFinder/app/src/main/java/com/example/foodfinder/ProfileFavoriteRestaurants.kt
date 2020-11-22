@@ -1,6 +1,5 @@
 package com.example.foodfinder
 
-import android.provider.ContactsContract
 import androidx.room.Embedded
 import androidx.room.Junction
 import androidx.room.Relation
@@ -10,7 +9,7 @@ data class ProfileFavoriteRestaurants(
     @Relation(
         parentColumn = "profileId",
         entityColumn = "restaurantId",
-        associateBy = Junction(ProfileRestaurantEntity::class)
+        associateBy = Junction(ProfileRestaurantRef::class)
     )
-    val playlists: List<Restaurant>
+    val restaurants: List<Restaurant>
 )
