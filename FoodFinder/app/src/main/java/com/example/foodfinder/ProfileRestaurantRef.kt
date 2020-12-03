@@ -1,10 +1,11 @@
 package com.example.foodfinder
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 
 
-@Entity(primaryKeys = ["profileId", "restaurantId"])
+@Entity(tableName = "favorite_restaurant", primaryKeys = ["profileId", "restaurantId"])
 class ProfileRestaurantRef (
-   val profileId: Int,
-   val restaurantId: Int
+        @ColumnInfo(name = "profileId") val profileId: Int,
+        @ColumnInfo(name = "restaurantId") val restaurantId: Int
 )

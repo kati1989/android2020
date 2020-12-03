@@ -4,7 +4,10 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+/**
+ * Entity class for modelling a Profile
+ */
+@Entity( tableName = "profile")
 class ProfileEntity(
     @PrimaryKey(autoGenerate = true) val profileId: Int,
 

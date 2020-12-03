@@ -16,7 +16,7 @@ abstract class FoodDatabase : RoomDatabase() {
 
         open fun getInstance(context: Context): FoodDatabase? {
             if (INSTANCE == null) {
-                INSTANCE = Room.databaseBuilder(context, FoodDatabase::class.java, "FoodDB")
+                INSTANCE = Room.databaseBuilder(context, FoodDatabase::class.java, "food.db")
                         .createFromAsset("database/food.db")
                         .build()
             }

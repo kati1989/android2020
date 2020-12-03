@@ -6,7 +6,6 @@ import androidx.room.Transaction
 
 @Dao
 interface RestaurantDao {
-
     @Transaction
     @Query("SELECT * FROM ProfileEntity")
     fun getProfileFavoriteRestaurants(): List<ProfileFavoriteRestaurants>

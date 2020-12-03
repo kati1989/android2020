@@ -8,7 +8,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        foodDb = FoodDatabase.getInstance(context = this);
+        foodDb = FoodDatabase.getInstance(context = this)
         setContentView(R.layout.activity_main)
     }
 }

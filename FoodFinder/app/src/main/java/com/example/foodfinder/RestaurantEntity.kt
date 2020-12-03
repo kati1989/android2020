@@ -7,9 +7,8 @@ import androidx.room.PrimaryKey
 /**
  * Entity class for modelling a Restaurant
  */
-@Entity
+@Entity(tableName = "restaurant")
 class Restaurant(
-
     @PrimaryKey(autoGenerate = true) val restaurantId: Int,
 
     @ColumnInfo(name = "title") val title: String,
