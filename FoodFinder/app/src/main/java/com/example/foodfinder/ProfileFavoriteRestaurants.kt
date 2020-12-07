@@ -11,5 +11,5 @@ data class ProfileFavoriteRestaurants(
         entityColumn = "restaurantId",
         associateBy = Junction(ProfileRestaurantRef::class)
     )
-    val restaurants: List<Restaurant>
+    val restaurants: List<RestaurantEntity>
 )

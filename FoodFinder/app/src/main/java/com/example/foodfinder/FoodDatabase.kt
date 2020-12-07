@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = arrayOf(ProfileEntity::class, Restaurant::class, ProfileRestaurantRef::class), version = 1, exportSchema = false)
+@Database(entities = arrayOf(RestaurantEntity::class, ProfileRestaurantRef::class), version = 1, exportSchema = false)
 abstract class FoodDatabase : RoomDatabase() {
 
     abstract fun restaurantDao(): RestaurantDao
@@ -16,8 +16,8 @@ abstract class FoodDatabase : RoomDatabase() {
 
         open fun getInstance(context: Context): FoodDatabase? {
             if (INSTANCE == null) {
-                INSTANCE = Room.databaseBuilder(context, FoodDatabase::class.java, "food.db")
-                        .createFromAsset("database/food.db")
+                INSTANCE = Room.databaseBuilder(context, FoodDatabase::class.java, "foodst.db")
+                        .createFromAsset("database/sqlite2.db")
                         .build()
             }
             return INSTANCE

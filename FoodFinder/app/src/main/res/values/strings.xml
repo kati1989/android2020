@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">FoodFinder</string>
+    <string name="error_text">Error message</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

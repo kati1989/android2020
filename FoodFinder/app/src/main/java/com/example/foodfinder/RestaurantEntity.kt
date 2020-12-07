@@ -1,5 +1,6 @@
 package com.example.foodfinder
 
+import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -8,14 +9,26 @@ import androidx.room.PrimaryKey
  * Entity class for modelling a Restaurant
  */
 @Entity(tableName = "restaurant")
-class Restaurant(
-    @PrimaryKey(autoGenerate = true) val restaurantId: Int,
+class RestaurantEntity(
 
-    @ColumnInfo(name = "title") val title: String,
+    @ColumnInfo(name = "image", defaultValue = "")
+    @NonNull
+    val image: String,
 
-    @ColumnInfo(name = "address") val adress: String,
+    @ColumnInfo(name = "address", defaultValue = "")
+    @NonNull
+    val adress: String,
 
-    @ColumnInfo(name = "image") val image: String,
+    @ColumnInfo(name = "price", defaultValue = "0" )
+    @NonNull
+    val price: Int,
 
-    @ColumnInfo(name = "price") val price: Int
+        @ColumnInfo(name = "title", defaultValue = "")
+    @NonNull
+    val title: String,
+
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    val restaurantId: Int
+
 )
