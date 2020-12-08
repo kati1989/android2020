@@ -38,7 +38,7 @@ class RestaurantAdapter(private val restaurants: ArrayList<RestaurantEntity>) :
 
         fun bind(rest: RestaurantEntity) {
             title?.text = rest.title
-            price?.text = rest.price.toString()
+            price?.text = "$".repeat(rest.price)
             imageView?.loadImage(rest.image)
         }
 

@@ -13,5 +13,8 @@ class MainActivity : FragmentActivity() {
         super.onCreate(savedInstanceState)
         foodDb = FoodDatabase.getInstance(context = this)
         setContentView(R.layout.activity_main)
+
+
+
     }
 }
