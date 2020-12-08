@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_restaurant.*
 
 
@@ -35,7 +34,7 @@ class RestaurantList : Fragment() {
         rList.apply {
             // set a LinearLayoutManager to handle Android
             // RecyclerView behavior
-            var layoutManager = LinearLayoutManager(activity)
+            layoutManager = LinearLayoutManager(activity)
             // set the custom adapter to the RecyclerView
             adapter = RestaurantAdapter(restaurantList);
         }
