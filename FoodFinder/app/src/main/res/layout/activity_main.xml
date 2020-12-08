@@ -8,16 +8,44 @@
     android:id="@+id/swipeRefreshLayout"
     tools:context="MainActivity">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.fragment.app.FragmentContainerView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/fragment_container_view"
+        <Button
+            android:id="@+id/btn_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="switch_fragment"
+            android:text="Profile"
+            tools:ignore="MissingConstraints" />
+
+
+        <Button
+            android:id="@+id/btn_2"
+            android:layout_width="173dp"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="200dp"
+            android:onClick="switch_fragment"
+            android:text="Restaurant"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <FrameLayout
+            android:id="@+id/fragment_placeHolder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:name="com.example.foodfinder.RestaurantList" />
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp">
+
+
+        </FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

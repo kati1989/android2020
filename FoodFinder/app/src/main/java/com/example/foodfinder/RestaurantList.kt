@@ -43,4 +43,6 @@ class RestaurantList : Fragment() {
     companion object {
         fun newInstance(): RestaurantList = RestaurantList()
     }
+
+
 }
