@@ -8,14 +8,14 @@ import androidx.room.PrimaryKey
 import org.jetbrains.annotations.NotNull
 
 /**
- * Entity class for modelling a Profile
+ * Entitas osztaly a profile adatbazistabla modellezesere.
  */
 @Entity( tableName = "profile")
 class ProfileEntity(
         @PrimaryKey(autoGenerate = true) val profileId: Int,
 
-        @ColumnInfo(name = "name", defaultValue = "")
-        @NonNull
+        @ColumnInfo(name = "name", defaultValue = "") // oszlop neve :"name", alapertelmezett erteke =""
+        @NonNull // - nem lehet null.
         val name: String,
 
         @ColumnInfo(name = "address", defaultValue = "")

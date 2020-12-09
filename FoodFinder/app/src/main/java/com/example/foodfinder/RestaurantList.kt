@@ -50,7 +50,7 @@ class RestaurantList : Fragment()  , RestaurantAdapter.OnRestaurantListener{
         fun newInstance(): RestaurantList = RestaurantList()
     }
 
-    override fun onNoteClick(position: Int) {
+    override fun onRestaurantClick(position: Int) {
         restaurantList.get(position);
         setFragment(fragment = RestaurantDetailFragment(restaurantList.get(position)))
     }

@@ -7,14 +7,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class RestaurantAdapter(private val restaurants: ArrayList<RestaurantEntity>,private val onRestaurantListener: OnRestaurantListener ) :
+// Adapter osztaly a Restaurant Entitasok RecyclerViewer ben valo megjelenitesehez,
+// ahhoz hogy egy Restaurant kijelolesevel megjelenitsuk a Restaurant reszleteit van egy onRestaurantListener, mely
+// figyeli hogy mikor kattintott egy felhasznalo a Restaurantra.
+class RestaurantAdapter(private val restaurants: ArrayList<RestaurantEntity>, private val onRestaurantListener: OnRestaurantListener ) :
     RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder>() {
-
-    fun updateRestaurants(newRestaurants: ArrayList<RestaurantEntity>) {
-        restaurants.clear()
-        restaurants.addAll(newRestaurants)
-        notifyDataSetChanged()
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int) : RestaurantViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -30,13 +27,10 @@ class RestaurantAdapter(private val restaurants: ArrayList<RestaurantEntity>,pri
 
     class RestaurantViewHolder(inflater: LayoutInflater, parent: ViewGroup, var onRestaurantListener: OnRestaurantListener) :
             RecyclerView.ViewHolder(inflater.inflate(R.layout.item_restaurant, parent, false)),
-            View.OnClickListener
-    {
-
+            View.OnClickListener {
         private val imageView : ImageView? =  itemView.findViewById(R.id.imageView)
         private val title : TextView? = itemView.findViewById(R.id.title)
         private val price : TextView? = itemView.findViewById(R.id.price)
-
         private  val click : Unit = itemView.setOnClickListener(this)
 
         fun bind(rest: RestaurantEntity) {
@@ -45,13 +39,15 @@ class RestaurantAdapter(private val restaurants: ArrayList<RestaurantEntity>,pri
             imageView?.loadImage(rest.image)
         }
 
+        // hogyha az Adapterunkre rakattintott a felhasznalo tovabb delegaljuk ezt az eventet annak
+        // aki az OnRestaurantListener eventre feliratkozott (RestaurantList fragmensnek)
         override fun onClick(v: View?) {
-            onRestaurantListener.onNoteClick(adapterPosition);
+            onRestaurantListener.onRestaurantClick(adapterPosition);
         }
     }
 
     interface OnRestaurantListener{
-        fun onNoteClick(position: Int)
+        fun onRestaurantClick(position: Int)
     }
 
 }

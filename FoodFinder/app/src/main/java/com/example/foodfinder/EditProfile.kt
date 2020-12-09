@@ -14,9 +14,7 @@ private const val ARG_PROFILE = "profile"
 
 
 /**
- * A simple [Fragment] subclass.
- * Use the [EditProfile.newInstance] factory method to
- * create an instance of this fragment.
+ * Egy egyszeru Fragment osztaly a Profilok editalasara.
  */
 class EditProfile : Fragment() {
 
@@ -26,6 +24,8 @@ class EditProfile : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         foodDb = FoodDatabase.getInstance(context = this.requireContext())
+        // feltoltjuk a profile valtozonkat az adatbazisbol erkezo profilbol
+        // mivel meg nincs login a 0 - adik profilt vesszuk
         var profileList : List<ProfileEntity> = foodDb?.profileDao()!!.getProfile() as ArrayList<ProfileEntity>;
         profile = profileList.get(0)
     }
@@ -36,8 +36,10 @@ class EditProfile : Fragment() {
         return  view
     }
 
+    //miutan letrejott a nezet inicializaljuk az egyes mezoket kezdeti ertekekkel az adatbazisbol
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         edit_name.setText(profile?.name)
         edit_address.setText(profile?.address)
         edit_email.setText(profile?.email)

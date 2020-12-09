@@ -22,7 +22,6 @@ class RestaurantDetailFragment(val rest : RestaurantEntity) : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -35,7 +34,10 @@ class RestaurantDetailFragment(val rest : RestaurantEntity) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       restaurantTitle.text = rest.title
+        restaurantTitle.text = rest.title
+        restaurantAddress.text = rest.adress
+        restaurantPrice.text = "$".repeat(rest.price)
+        imageViewRestaurant.loadImage(rest.image)
     }
 
 

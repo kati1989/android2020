@@ -13,7 +13,7 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/btn_1"
+            android:id="@+id/btn_edit_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -23,7 +23,7 @@
             tools:ignore="MissingConstraints" />
 
         <Button
-            android:id="@+id/btn_2"
+            android:id="@+id/btn_restaurant_list"
             android:layout_width="173dp"
             android:layout_height="48dp"
             android:layout_alignParentBottom="true"
