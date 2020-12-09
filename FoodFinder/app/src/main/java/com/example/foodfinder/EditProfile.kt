@@ -19,9 +19,7 @@ private const val ARG_PROFILE = "profile"
  * create an instance of this fragment.
  */
 class EditProfile : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
     private var profile: ProfileEntity? = null;
     var foodDb : FoodDatabase? = null;
 

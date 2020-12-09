@@ -23,7 +23,7 @@ class RestaurantEntity(
     @NonNull
     val price: Int,
 
-        @ColumnInfo(name = "title", defaultValue = "")
+    @ColumnInfo(name = "title", defaultValue = "")
     @NonNull
     val title: String,
 
