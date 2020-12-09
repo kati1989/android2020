@@ -28,6 +28,10 @@ class ProfileEntity(
 
         @ColumnInfo(name = "email", defaultValue = "")
         @NonNull
-        val email: String
+        val email: String,
+
+        @ColumnInfo(name = "phone", defaultValue = "")
+        @NonNull
+        val phone: String
 )
 

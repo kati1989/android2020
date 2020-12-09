@@ -42,10 +42,6 @@ class RestaurantAdapter(private val restaurants: ArrayList<RestaurantEntity>) :
             imageView?.loadImage(rest.image)
         }
 
-
-
-
-
     }
 
 
