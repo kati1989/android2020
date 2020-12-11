@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddRestaurant">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_marginTop="100dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="128dp"
+            android:layout_weight="1">
+
+
+            <EditText
+                android:id="@+id/edit_title_restaurant"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="name"
+                android:textAlignment="viewStart" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_weight="1"
+            android:textAlignment="viewStart">
+
+            <EditText
+                android:id="@+id/edit_address_restaurant"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="adress"
+                android:inputType="text"
+                android:tag="adress"
+                android:textAlignment="viewStart" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editTextTextPersonName"
+                    android:layout_width="114dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Price"
+                    android:textAlignment="viewStart" />
+
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="wrap_content"
+                    android:text="$" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_height="wrap_content"
+                    android:text="$$" />
+
+                <RadioButton
+                    android:id="@+id/radioButton4"
+                    android:layout_width="67dp"
+                    android:layout_height="wrap_content"
+                    android:text="$$$" />
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="74dp"
+                    android:layout_height="wrap_content"
+                    android:text="$$$$" />
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                    </TableRow>
+
+                </TableLayout>
+
+            </RadioGroup>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_input_add"
+            android:onClick="storeRestaurant"
+            />
+
+
+    </LinearLayout>
+
+</FrameLayout>

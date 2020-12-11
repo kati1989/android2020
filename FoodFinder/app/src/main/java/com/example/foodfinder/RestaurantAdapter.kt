@@ -36,7 +36,8 @@ class RestaurantAdapter(private val restaurants: ArrayList<RestaurantEntity>, pr
         fun bind(rest: RestaurantEntity) {
             title?.text = rest.title
             price?.text = "$".repeat(rest.price)
-            imageView?.loadImage(rest.image)
+            if (rest.image.isNotBlank())
+                imageView?.loadImage(rest.image)
         }
 
         // hogyha az Adapterunkre rakattintott a felhasznalo tovabb delegaljuk ezt az eventet annak

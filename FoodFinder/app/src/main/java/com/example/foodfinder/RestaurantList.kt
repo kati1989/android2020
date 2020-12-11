@@ -55,6 +55,10 @@ class RestaurantList : Fragment()  , RestaurantAdapter.OnRestaurantListener{
         setFragment(fragment = RestaurantDetailFragment(restaurantList.get(position)))
     }
 
+    fun addRestaurant(view: View){
+        setFragment(fragment= AddRestaurant())
+    }
+
     fun setFragment(fragment: Fragment?) {
         val fm: FragmentManager? = parentFragmentManager
         val fragmentTransaction: FragmentTransaction = fm!!.beginTransaction()

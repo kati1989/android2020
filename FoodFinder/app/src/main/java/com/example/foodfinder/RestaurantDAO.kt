@@ -1,8 +1,6 @@
 package com.example.foodfinder
 
-import androidx.room.Dao
-import androidx.room.Query
-import androidx.room.Transaction
+import androidx.room.*
 
 /**
  * Restaurant adatok adatbazisszintu elereset megvalosito osztaly.
@@ -15,4 +13,8 @@ interface RestaurantDao {
     @Transaction
     @Query("SELECT * from restaurant")
     fun getAllRestaurants() : List<RestaurantEntity>
+
+    @Transaction
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertRestaurant(restaurant: RestaurantEntity)
 }
