@@ -20,7 +20,7 @@
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
+                android:layout_width="141dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 tools:src="@tools:sample/avatars" />
@@ -74,6 +74,24 @@
                 android:textAlignment="viewStart" />
         </com.google.android.material.textfield.TextInputLayout>
 
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/edit_pic"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="profile picture"
+                android:inputType="text"
+                android:tag="picture"
+                android:textAlignment="viewStart" />
+        </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -92,7 +110,7 @@
                 android:textAlignment="viewStart" />
 
             <ImageButton
-                android:id="@+id/imageButton3"
+                android:id="@+id/saveProfile"
                 android:layout_width="92dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

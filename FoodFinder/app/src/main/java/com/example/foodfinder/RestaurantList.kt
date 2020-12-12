@@ -53,7 +53,7 @@ class RestaurantList : Fragment()  , RestaurantAdapter.OnRestaurantListener{
 
     override fun onRestaurantClick(position: Int) {
         val viewModel: RestaurantViewModel by activityViewModels()
-        viewModel.selectItem(restaurantList.get(position))
+        viewModel.selectRestaurant(restaurantList.get(position))
         setFragment(fragment = RestaurantDetailFragment(restaurantList.get(position)))
     }
 

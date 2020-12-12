@@ -2,17 +2,14 @@ package com.example.foodfinder
 
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.fragment.app.*
-import kotlinx.android.synthetic.main.fragment_add_restaurant.*
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
 
-class MainActivity : FragmentActivity(), AddRestaurant.NotifySaveRestaurant {
+class MainActivity : FragmentActivity(), AddRestaurant.NotifySaveRestaurant, EditProfile.NotifySaveProfile {
 
     var foodDb : FoodDatabase? = null;
     var loggedInUserProfile : ProfileEntity?= null;
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(null)
@@ -31,7 +28,7 @@ class MainActivity : FragmentActivity(), AddRestaurant.NotifySaveRestaurant {
     fun switch_fragment(view: View) {
         var newFragment: Fragment? = null
         when (view.id) {
-            R.id.btn_edit_profile -> newFragment = EditProfile()
+            R.id.btn_edit_profile -> newFragment = EditProfile(this)
             R.id.btn_restaurant_list -> newFragment = RestaurantList()
         }
         setFragment(newFragment)
@@ -47,19 +44,8 @@ class MainActivity : FragmentActivity(), AddRestaurant.NotifySaveRestaurant {
 
     fun addRestaurant(view: View) {
         val viewModel: RestaurantViewModel by viewModels<RestaurantViewModel>()
-        viewModel.selectItem(null)
+        viewModel.selectRestaurant(null)
         setFragment(AddRestaurant(this))
-    }
-
-    fun storeRestaurant(view: View) {
-
-
-
-    }
-
-    fun saveProfile(view: View) {
-        foodDb?.profileDao()!!.update(ProfileEntity(loggedInUserProfile!!.profileId, edit_name.text.toString(),
-        edit_address.text.toString(),"", edit_email.text.toString(), edit_phone.text.toString()))
     }
 
     fun editRestaurant(view : View) {
@@ -71,7 +57,6 @@ class MainActivity : FragmentActivity(), AddRestaurant.NotifySaveRestaurant {
         var r : RestaurantEntity? =  viewModel.selectedItem.value
 
         foodDb?.restaurantDao()!!.deleteRestaurant(r!!)
-
         setFragment(RestaurantList())
     }
 
@@ -83,6 +68,14 @@ class MainActivity : FragmentActivity(), AddRestaurant.NotifySaveRestaurant {
             foodDb?.restaurantDao()!!.insertRestaurant(r!!)
         else
             foodDb?.restaurantDao()!!.updateRestaurant(r!!)
+
+        setFragment(RestaurantList())
+    }
+
+    override fun onSaveProfileClicked() {
+        val viewModel: RestaurantViewModel by viewModels<RestaurantViewModel>()
+        var p : ProfileEntity? =  viewModel.selectedProfile.value
+        foodDb?.profileDao()!!.update(p!!)
 
         setFragment(RestaurantList())
     }

@@ -23,7 +23,6 @@ class AddRestaurant(val notifySaveRestaurant: NotifySaveRestaurant) : Fragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -72,13 +71,13 @@ class AddRestaurant(val notifySaveRestaurant: NotifySaveRestaurant) : Fragment()
                     var  restaurant : RestaurantEntity = RestaurantEntity(edit_picture_restaurant.text.toString(),
                         edit_address_restaurant.text.toString(),
                         price,edit_title_restaurant.text.toString(),-1);
-                    viewModel.selectItem(restaurant)
+                    viewModel.selectRestaurant(restaurant)
 
                 } else {
                     var  restaurant : RestaurantEntity = RestaurantEntity(edit_picture_restaurant.text.toString(),
                         edit_address_restaurant.text.toString(),
                         price,edit_title_restaurant.text.toString(), viewModel.selectedItem.value!!.restaurantId);
-                    viewModel.selectItem(restaurant)
+                    viewModel.selectRestaurant(restaurant)
                 }
             }
             notifySaveRestaurant.onSaveClicked();

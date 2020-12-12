@@ -8,8 +8,15 @@ class RestaurantViewModel : ViewModel() {
     private val mutableSelectedItem = MutableLiveData<RestaurantEntity>()
     val selectedItem: LiveData<RestaurantEntity> get() = mutableSelectedItem
 
-    fun selectItem(item: RestaurantEntity?) {
+    private val mutableProfile = MutableLiveData<ProfileEntity>()
+    val selectedProfile: MutableLiveData<ProfileEntity> get() = mutableProfile
+
+    fun selectRestaurant(item: RestaurantEntity?) {
         mutableSelectedItem.value = item
+    }
+
+    fun selectProfile(item : ProfileEntity?) {
+        mutableProfile.value = item
     }
 
 

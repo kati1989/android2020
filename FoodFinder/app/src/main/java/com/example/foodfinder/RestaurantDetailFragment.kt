@@ -30,7 +30,7 @@ class RestaurantDetailFragment(val rest : RestaurantEntity) : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val viewModel: RestaurantViewModel by activityViewModels()
-        viewModel.selectItem(rest);
+        viewModel.selectRestaurant(rest);
 
         return inflater.inflate(R.layout.fragment_restaurant_detail, container, false)
     }
