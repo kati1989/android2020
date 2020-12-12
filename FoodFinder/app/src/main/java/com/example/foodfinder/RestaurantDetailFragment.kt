@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import kotlinx.android.synthetic.main.fragment_restaurant_detail.*
 
@@ -28,6 +29,8 @@ class RestaurantDetailFragment(val rest : RestaurantEntity) : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val viewModel: RestaurantViewModel by activityViewModels()
+        viewModel.selectItem(rest);
 
         return inflater.inflate(R.layout.fragment_restaurant_detail, container, false)
     }

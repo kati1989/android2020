@@ -38,6 +38,20 @@
             android:layout_height="wrap_content"
             android:text="TextView" />
 
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="editRestaurant"
+            android:src="@android:drawable/ic_menu_edit" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="deleteRestaurant"
+            android:src="@android:drawable/ic_delete" />
+
     </LinearLayout>
 
 </FrameLayout>

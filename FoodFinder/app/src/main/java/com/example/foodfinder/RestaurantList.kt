@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_restaurant.*
 
@@ -51,12 +52,9 @@ class RestaurantList : Fragment()  , RestaurantAdapter.OnRestaurantListener{
     }
 
     override fun onRestaurantClick(position: Int) {
-        restaurantList.get(position);
+        val viewModel: RestaurantViewModel by activityViewModels()
+        viewModel.selectItem(restaurantList.get(position))
         setFragment(fragment = RestaurantDetailFragment(restaurantList.get(position)))
-    }
-
-    fun addRestaurant(view: View){
-        setFragment(fragment= AddRestaurant())
     }
 
     fun setFragment(fragment: Fragment?) {

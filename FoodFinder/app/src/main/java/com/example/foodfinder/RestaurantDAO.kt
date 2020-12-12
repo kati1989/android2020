@@ -17,4 +17,10 @@ interface RestaurantDao {
     @Transaction
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertRestaurant(restaurant: RestaurantEntity)
+
+    @Update
+    fun updateRestaurant(restaurant: RestaurantEntity)
+
+    @Delete
+    fun deleteRestaurant(restaurant: RestaurantEntity)
 }

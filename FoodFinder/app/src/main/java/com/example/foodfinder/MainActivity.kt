@@ -2,20 +2,20 @@ package com.example.foodfinder
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
+import android.widget.TextView
+import androidx.activity.viewModels
+import androidx.fragment.app.*
 import kotlinx.android.synthetic.main.fragment_add_restaurant.*
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
 
-class MainActivity : FragmentActivity() {
+class MainActivity : FragmentActivity(), AddRestaurant.NotifySaveRestaurant {
 
     var foodDb : FoodDatabase? = null;
     var loggedInUserProfile : ProfileEntity?= null;
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        super.onCreate(null)
         setContentView(R.layout.activity_main)
         val fm: FragmentManager = supportFragmentManager
         val ft: FragmentTransaction = fm.beginTransaction()
@@ -46,29 +46,45 @@ class MainActivity : FragmentActivity() {
     }
 
     fun addRestaurant(view: View) {
-        setFragment(AddRestaurant())
+        val viewModel: RestaurantViewModel by viewModels<RestaurantViewModel>()
+        viewModel.selectItem(null)
+        setFragment(AddRestaurant(this))
     }
 
     fun storeRestaurant(view: View) {
-        var price : Int = 1
-        if (radioButton.isChecked)
-            price =1
-        if (radioButton2.isChecked)
-            price =2
-        if (radioButton3.isChecked)
-            price =3
-        if (radioButton4.isChecked)
-            price = 4
 
-        var  restaurant : RestaurantEntity = RestaurantEntity("",edit_address_restaurant.text.toString(),
-                price,edit_title_restaurant.text.toString(),0);
-        foodDb?.restaurantDao()!!.insertRestaurant(restaurant);
-        setFragment(RestaurantList())
+
+
     }
 
     fun saveProfile(view: View) {
         foodDb?.profileDao()!!.update(ProfileEntity(loggedInUserProfile!!.profileId, edit_name.text.toString(),
         edit_address.text.toString(),"", edit_email.text.toString(), edit_phone.text.toString()))
+    }
+
+    fun editRestaurant(view : View) {
+        setFragment(AddRestaurant(this));
+    }
+
+    fun deleteRestaurant(view : View){
+        val viewModel: RestaurantViewModel by viewModels<RestaurantViewModel>()
+        var r : RestaurantEntity? =  viewModel.selectedItem.value
+
+        foodDb?.restaurantDao()!!.deleteRestaurant(r!!)
+
+        setFragment(RestaurantList())
+    }
+
+    override fun onSaveClicked() {
+        val viewModel: RestaurantViewModel by viewModels<RestaurantViewModel>()
+        var r : RestaurantEntity? =  viewModel.selectedItem.value
+
+        if (r!!.restaurantId<0)
+            foodDb?.restaurantDao()!!.insertRestaurant(r!!)
+        else
+            foodDb?.restaurantDao()!!.updateRestaurant(r!!)
+
+        setFragment(RestaurantList())
     }
 
 
