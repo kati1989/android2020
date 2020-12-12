@@ -7,11 +7,12 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import kotlinx.android.synthetic.main.fragment_add_restaurant.*
+import kotlinx.android.synthetic.main.fragment_edit_profile.*
 
 class MainActivity : FragmentActivity() {
 
     var foodDb : FoodDatabase? = null;
-
+    var loggedInUserProfile : ProfileEntity?= null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +20,8 @@ class MainActivity : FragmentActivity() {
         val fm: FragmentManager = supportFragmentManager
         val ft: FragmentTransaction = fm.beginTransaction()
         foodDb = FoodDatabase.getInstance(context = this)
-
+        var profileList : List<ProfileEntity> = foodDb?.profileDao()!!.getProfile() as ArrayList<ProfileEntity>;
+        loggedInUserProfile = profileList.get(0)
         // kezdetben a RestaurantList fragmenst toltjuk be a fragment_placeholder ui elemenukbe
         ft.add(R.id.fragment_placeHolder, RestaurantList())
         ft.commit()
@@ -49,19 +51,24 @@ class MainActivity : FragmentActivity() {
 
     fun storeRestaurant(view: View) {
         var price : Int = 1
-        if (radioButton.isSelected)
+        if (radioButton.isChecked)
             price =1
-        if (radioButton2.isSelected)
+        if (radioButton2.isChecked)
             price =2
-        if (radioButton3.isSelected)
+        if (radioButton3.isChecked)
             price =3
-        if (radioButton4.isSelected)
+        if (radioButton4.isChecked)
             price = 4
 
         var  restaurant : RestaurantEntity = RestaurantEntity("",edit_address_restaurant.text.toString(),
                 price,edit_title_restaurant.text.toString(),0);
         foodDb?.restaurantDao()!!.insertRestaurant(restaurant);
         setFragment(RestaurantList())
+    }
+
+    fun saveProfile(view: View) {
+        foodDb?.profileDao()!!.update(ProfileEntity(loggedInUserProfile!!.profileId, edit_name.text.toString(),
+        edit_address.text.toString(),"", edit_email.text.toString(), edit_phone.text.toString()))
     }
 
 

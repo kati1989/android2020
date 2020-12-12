@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="100dp"
+    android:layout_marginBottom="50dp"
     tools:context=".EditProfile">
 
     <LinearLayout
@@ -76,6 +77,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
             android:layout_weight="1">
 
             <EditText
@@ -88,6 +90,18 @@
                 android:inputType="text"
                 android:tag="email"
                 android:textAlignment="viewStart" />
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="92dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:src="@android:drawable/ic_menu_save"
+                android:onClick="saveProfile"
+                />
+
         </com.google.android.material.textfield.TextInputLayout>
 
 
