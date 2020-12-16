@@ -16,6 +16,9 @@ interface ProfileDAO {
     @Query("SELECT * FROM profile")
     fun getProfile(): List<ProfileEntity>
 
+    @Query("SELECT * FROM profile WHERE email like :emailParam")
+    fun getProfileByEmail(emailParam : String): ProfileEntity
+
     @Update
     fun update(profile : ProfileEntity?)
 }

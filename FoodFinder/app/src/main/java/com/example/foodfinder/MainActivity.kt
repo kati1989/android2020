@@ -7,19 +7,19 @@ import androidx.fragment.app.*
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
 
 class MainActivity : FragmentActivity(), AddRestaurant.NotifySaveRestaurant, EditProfile.NotifySaveProfile {
-
     var foodDb : FoodDatabase? = null;
     var loggedInUserProfile : ProfileEntity?= null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(null)
         setContentView(R.layout.activity_main)
-        val fm: FragmentManager = supportFragmentManager
-        val ft: FragmentTransaction = fm.beginTransaction()
+
         foodDb = FoodDatabase.getInstance(context = this)
         var profileList : List<ProfileEntity> = foodDb?.profileDao()!!.getProfile() as ArrayList<ProfileEntity>;
         loggedInUserProfile = profileList.get(0)
         // kezdetben a RestaurantList fragmenst toltjuk be a fragment_placeholder ui elemenukbe
+        val fm: FragmentManager = supportFragmentManager
+        val ft: FragmentTransaction = fm.beginTransaction()
         ft.add(R.id.fragment_placeHolder, RestaurantList())
         ft.commit()
     }
@@ -61,22 +61,25 @@ class MainActivity : FragmentActivity(), AddRestaurant.NotifySaveRestaurant, Edi
     }
 
     override fun onSaveClicked() {
+        //kivesszuk a viewModelbol a vendeglot.
         val viewModel: RestaurantViewModel by viewModels<RestaurantViewModel>()
         var r : RestaurantEntity? =  viewModel.selectedItem.value
 
-        if (r!!.restaurantId<0)
+        if (r!!.restaurantId<0) // hogyha uj az id ja kissebb mint 0 es inserteljuk
             foodDb?.restaurantDao()!!.insertRestaurant(r!!)
         else
             foodDb?.restaurantDao()!!.updateRestaurant(r!!)
-
+        //mentes utan visszanavigalunk a RestaurantListhez
         setFragment(RestaurantList())
     }
 
+    // hogyha a fragmens jelezte, hogy mentesre van szukseg akkor elmentjuk a viewModelben levo Profilt
     override fun onSaveProfileClicked() {
+        //lekerdezzuk a viewModelben levo PRofilt
         val viewModel: RestaurantViewModel by viewModels<RestaurantViewModel>()
         var p : ProfileEntity? =  viewModel.selectedProfile.value
+        //perzisztaljuk a profilt.
         foodDb?.profileDao()!!.update(p!!)
-
         setFragment(RestaurantList())
     }
 

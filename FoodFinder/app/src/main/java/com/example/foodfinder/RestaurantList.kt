@@ -35,14 +35,13 @@ class RestaurantList : Fragment()  , RestaurantAdapter.OnRestaurantListener{
     // populate the views now that the layout has been inflated
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // RecyclerView node initialized here
-
+        // Recycle viewer inicializalasa
         var resAdapter : RestaurantAdapter= RestaurantAdapter(restaurantList, this)
         rList.apply {
             // set a LinearLayoutManager to handle Android
             // RecyclerView behavior
             layoutManager = LinearLayoutManager(activity)
-            // set the custom adapter to the RecyclerView
+            // beallitjuk a RecycleViewer Adapter osztalyat.
             adapter = resAdapter
         }
     }
@@ -51,7 +50,9 @@ class RestaurantList : Fragment()  , RestaurantAdapter.OnRestaurantListener{
         fun newInstance(): RestaurantList = RestaurantList()
     }
 
+    // a felhasznalo kivalasztott egy vendeglot, ezert megjelenitjuk azt egy uj RestaurantDetail fragmensben
     override fun onRestaurantClick(position: Int) {
+        // a viewModelbe beallitjuk a kivalasztott fragmenst
         val viewModel: RestaurantViewModel by activityViewModels()
         viewModel.selectRestaurant(restaurantList.get(position))
         setFragment(fragment = RestaurantDetailFragment(restaurantList.get(position)))

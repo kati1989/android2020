@@ -66,21 +66,22 @@ class AddRestaurant(val notifySaveRestaurant: NotifySaveRestaurant) : Fragment()
                 if (radioButton4.isChecked)
                     price =4
 
+                // berakjuk a viewModelbe az RestaurantEntityt
                 val viewModel: RestaurantViewModel by activityViewModels()
                 if (viewModel.selectedItem.value == null) {
                     var  restaurant : RestaurantEntity = RestaurantEntity(edit_picture_restaurant.text.toString(),
                         edit_address_restaurant.text.toString(),
-                        price,edit_title_restaurant.text.toString(),-1);
+                        price,edit_title_restaurant.text.toString(),-1); // id -1 uj Restaurantrol van szo
                     viewModel.selectRestaurant(restaurant)
 
-                } else {
+                } else { // ha mar volt RestaurantEntity a ViewModelbe akkor update lesz
                     var  restaurant : RestaurantEntity = RestaurantEntity(edit_picture_restaurant.text.toString(),
                         edit_address_restaurant.text.toString(),
                         price,edit_title_restaurant.text.toString(), viewModel.selectedItem.value!!.restaurantId);
                     viewModel.selectRestaurant(restaurant)
                 }
             }
-            notifySaveRestaurant.onSaveClicked();
+            notifySaveRestaurant.onSaveClicked(); //ertesitem a MainActivityt hogy insert v update nek kell tortennie.
             }
     }
 

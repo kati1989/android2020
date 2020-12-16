@@ -25,6 +25,7 @@ class RestaurantAdapter(private val restaurants: ArrayList<RestaurantEntity>, pr
         holder.bind(restaurant)
     }
 
+    //adatok osszekotese a ui -on levo nezettel
     class RestaurantViewHolder(inflater: LayoutInflater, parent: ViewGroup, var onRestaurantListener: OnRestaurantListener) :
             RecyclerView.ViewHolder(inflater.inflate(R.layout.item_restaurant, parent, false)),
             View.OnClickListener {
@@ -42,6 +43,7 @@ class RestaurantAdapter(private val restaurants: ArrayList<RestaurantEntity>, pr
 
         // hogyha az Adapterunkre rakattintott a felhasznalo tovabb delegaljuk ezt az eventet annak
         // aki az OnRestaurantListener eventre feliratkozott (RestaurantList fragmensnek)
+        // adapterPosition tarolja h melyik Restaurant-ra klikkelt a felhasznalo.
         override fun onClick(v: View?) {
             onRestaurantListener.onRestaurantClick(adapterPosition);
         }
