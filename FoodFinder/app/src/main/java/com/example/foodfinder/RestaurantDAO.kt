@@ -23,4 +23,14 @@ interface RestaurantDao {
 
     @Delete
     fun deleteRestaurant(restaurant: RestaurantEntity)
+
+    @Query("SELECT * from favorite_restaurant WHERE profileId = :profileId")
+    fun getFavoriteRestaurantForProfile(profileId : Int) : List<ProfileRestaurantRef>
+
+    @Delete
+    fun deleteFavorite(profileRestaurantRef: ProfileRestaurantRef)
+
+    @Insert
+    fun insertFavorite(profileRestaurantRef: ProfileRestaurantRef)
+
 }

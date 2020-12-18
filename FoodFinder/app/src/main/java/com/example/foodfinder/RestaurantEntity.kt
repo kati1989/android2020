@@ -1,10 +1,7 @@
 package com.example.foodfinder
 
 import androidx.annotation.NonNull
-import androidx.room.ColumnInfo
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 import java.lang.reflect.Constructor
 
 
@@ -32,6 +29,9 @@ class RestaurantEntity(
         @PrimaryKey(autoGenerate = true)
         @NonNull
         val restaurantId: Int
-)
+){
+        @Ignore
+        var isFavoriteForActualProfile: Boolean = false
+}
 
 

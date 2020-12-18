@@ -1,10 +1,14 @@
 package com.example.foodfinder
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
-import androidx.fragment.app.*
-import kotlinx.android.synthetic.main.fragment_edit_profile.*
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 
 class MainActivity : FragmentActivity(), AddRestaurant.NotifySaveRestaurant, EditProfile.NotifySaveProfile {
     var foodDb : FoodDatabase? = null;
@@ -13,10 +17,12 @@ class MainActivity : FragmentActivity(), AddRestaurant.NotifySaveRestaurant, Edi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(null)
         setContentView(R.layout.activity_main)
-
         foodDb = FoodDatabase.getInstance(context = this)
-        var profileList : List<ProfileEntity> = foodDb?.profileDao()!!.getProfile() as ArrayList<ProfileEntity>;
-        loggedInUserProfile = profileList.get(0)
+        var shared =applicationContext.getSharedPreferences("test", Context.MODE_PRIVATE)
+        var userName =shared.getString("userName", "");
+       loggedInUserProfile = foodDb?.profileDao()!!.getProfileByEmail(userName!!);
+        val viewModel: RestaurantViewModel by viewModels<RestaurantViewModel>()
+        viewModel.selectProfile(loggedInUserProfile)
         // kezdetben a RestaurantList fragmenst toltjuk be a fragment_placeholder ui elemenukbe
         val fm: FragmentManager = supportFragmentManager
         val ft: FragmentTransaction = fm.beginTransaction()
@@ -48,11 +54,11 @@ class MainActivity : FragmentActivity(), AddRestaurant.NotifySaveRestaurant, Edi
         setFragment(AddRestaurant(this))
     }
 
-    fun editRestaurant(view : View) {
+    fun editRestaurant(view: View) {
         setFragment(AddRestaurant(this));
     }
 
-    fun deleteRestaurant(view : View){
+    fun deleteRestaurant(view: View){
         val viewModel: RestaurantViewModel by viewModels<RestaurantViewModel>()
         var r : RestaurantEntity? =  viewModel.selectedItem.value
 

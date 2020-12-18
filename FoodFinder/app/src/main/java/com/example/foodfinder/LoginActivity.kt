@@ -1,6 +1,8 @@
 package com.example.foodfinder
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
@@ -29,8 +31,12 @@ class LoginActivity : AppCompatActivity() {
         var profile: ProfileEntity = foodDb?.profileDao()!!.getProfileByEmail(username.toString());
         //hogyha van profil a db ben tovabb navigallunk, jelszo ellenorzes meg nincs.
         if (profile!=null) {
-            val intent = Intent(this, MainActivity::class.java).apply {
-                putExtra("userName", username)
+            var intent = Intent(this, MainActivity::class.java)
+
+            val sharedPref = applicationContext?.getSharedPreferences("test", Context.MODE_PRIVATE)
+            with (sharedPref!!.edit()) {
+                putString("userName", username.toString())
+                apply()
             }
             startActivity(intent)
         } else{

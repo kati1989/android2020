@@ -34,4 +34,12 @@
 
     </LinearLayout>
 
+    <ImageButton
+        android:id="@+id/favoriteButton"
+        android:layout_width="106dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:srcCompat="@android:drawable/star_big_on"
+        />
+
 </LinearLayout>
