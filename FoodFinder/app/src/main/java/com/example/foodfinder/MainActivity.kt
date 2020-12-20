@@ -20,7 +20,9 @@ class MainActivity : FragmentActivity(), AddRestaurant.NotifySaveRestaurant, Edi
         foodDb = FoodDatabase.getInstance(context = this)
         var shared =applicationContext.getSharedPreferences("test", Context.MODE_PRIVATE)
         var userName =shared.getString("userName", "");
-       loggedInUserProfile = foodDb?.profileDao()!!.getProfileByEmail(userName!!);
+        var password =shared.getString("password", "");
+
+        loggedInUserProfile = foodDb?.profileDao()!!.getProfileByEmail(userName!!);
         val viewModel: RestaurantViewModel by viewModels<RestaurantViewModel>()
         viewModel.selectProfile(loggedInUserProfile)
         // kezdetben a RestaurantList fragmenst toltjuk be a fragment_placeholder ui elemenukbe

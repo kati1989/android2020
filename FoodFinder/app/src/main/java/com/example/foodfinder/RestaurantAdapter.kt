@@ -34,10 +34,14 @@ class RestaurantAdapter(private val restaurants: ArrayList<RestaurantEntity>, pr
         private val title: TextView? = itemView.findViewById(R.id.title)
         private val price: TextView? = itemView.findViewById(R.id.price)
         private val favorite: ImageButton = itemView.findViewById(R.id.favoriteButton)
+        private val long: TextView? = itemView.findViewById(R.id.edit_long_restaurant)
+        private val lat: TextView? = itemView.findViewById(R.id.edit_lat_restaurant)
         private val click: Unit = itemView.setOnClickListener(this)
 
         fun bind(rest: RestaurantEntity) {
             title?.text = rest.title
+            lat?.text = rest.longitude.toString()
+            long?.text =rest.lat.toString()
             price?.text = "$".repeat(rest.price)
             if (rest.image.isNotBlank())
                 imageView?.loadImage(rest.image)

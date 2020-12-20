@@ -28,7 +28,15 @@ class RestaurantEntity(
 
         @PrimaryKey(autoGenerate = true)
         @NonNull
-        val restaurantId: Int
+        val restaurantId: Int,
+
+        @ColumnInfo(name = "lat", defaultValue = "0")
+        @NonNull
+        val lat: Double,
+
+        @ColumnInfo(name = "long", defaultValue = "0")
+        @NonNull
+        val longitude: Double
 ){
         @Ignore
         var isFavoriteForActualProfile: Boolean = false

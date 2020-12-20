@@ -128,6 +128,41 @@
                 android:hint="picture url" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_weight="1">
+
+
+            <EditText
+                android:id="@+id/edit_lat_restaurant"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="name"
+                android:textAlignment="viewStart" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_weight="1">
+
+
+            <EditText
+                android:id="@+id/edit_long_restaurant"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="name"
+                android:textAlignment="viewStart" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <ImageButton
             android:id="@+id/persistRestaurant"
             android:layout_width="match_parent"

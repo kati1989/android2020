@@ -40,6 +40,8 @@ class AddRestaurant(val notifySaveRestaurant: NotifySaveRestaurant) : Fragment()
             edit_address_restaurant.setText(viewModel.selectedItem.value?.adress)
             edit_title_restaurant.setText(viewModel.selectedItem.value?.title)
             edit_picture_restaurant.setText(viewModel.selectedItem.value?.image)
+            edit_lat_restaurant.setText(viewModel.selectedItem.value?.lat.toString())
+            edit_long_restaurant.setText(viewModel.selectedItem.value?.longitude.toString())
 
             if (viewModel.selectedItem.value?.price ==1){
                 radioButton.isChecked = true
@@ -71,13 +73,18 @@ class AddRestaurant(val notifySaveRestaurant: NotifySaveRestaurant) : Fragment()
                 if (viewModel.selectedItem.value == null) {
                     var  restaurant : RestaurantEntity = RestaurantEntity(edit_picture_restaurant.text.toString(),
                         edit_address_restaurant.text.toString(),
-                        price,edit_title_restaurant.text.toString(),-1); // id -1 uj Restaurantrol van szo
+                        price,edit_title_restaurant.text.toString(),-1,
+                         edit_lat_restaurant.text.toString().toDouble(),
+                        edit_long_restaurant.text.toString().toDouble()); // id -1 uj Restaurantrol van szo
                     viewModel.selectRestaurant(restaurant)
 
                 } else { // ha mar volt RestaurantEntity a ViewModelbe akkor update lesz
                     var  restaurant : RestaurantEntity = RestaurantEntity(edit_picture_restaurant.text.toString(),
                         edit_address_restaurant.text.toString(),
-                        price,edit_title_restaurant.text.toString(), viewModel.selectedItem.value!!.restaurantId);
+                        price,edit_title_restaurant.text.toString(),
+                        viewModel.selectedItem.value!!.restaurantId,
+                        edit_lat_restaurant.text.toString().toDouble(),
+                        edit_long_restaurant.text.toString().toDouble());
                     viewModel.selectRestaurant(restaurant)
                 }
             }

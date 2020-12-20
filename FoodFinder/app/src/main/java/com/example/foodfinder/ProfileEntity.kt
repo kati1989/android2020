@@ -33,6 +33,10 @@ class ProfileEntity(
 
         @ColumnInfo(name = "phone", defaultValue = "")
         @NonNull
-        val phone: String
+        val phone: String,
+
+        @ColumnInfo(name = "password", defaultValue = "")
+        @NonNull
+        val password: String
 )
 

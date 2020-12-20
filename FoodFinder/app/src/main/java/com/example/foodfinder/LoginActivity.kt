@@ -28,7 +28,7 @@ class LoginActivity : AppCompatActivity() {
         val password = findViewById<EditText>(R.id.password).text
         //ha letezik a felhasznalo atnavigalunk a MainActivityre
         foodDb = FoodDatabase.getInstance(context = this)
-        var profile: ProfileEntity = foodDb?.profileDao()!!.getProfileByEmail(username.toString());
+        var profile: ProfileEntity = foodDb?.profileDao()!!.getProfileByEmail(username.toString(), password.toString());
         //hogyha van profil a db ben tovabb navigallunk, jelszo ellenorzes meg nincs.
         if (profile!=null) {
             var intent = Intent(this, MainActivity::class.java)

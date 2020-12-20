@@ -55,7 +55,8 @@ class EditProfile(val notifySaveProfile: NotifySaveProfile) : Fragment() ,  View
                 // eltaroljuk a viewModelbe a Profilet
                 val viewModel: RestaurantViewModel by activityViewModels()
                 viewModel.selectProfile(ProfileEntity(profile!!.profileId, edit_name.text.toString(),
-                    edit_address.text.toString(),edit_pic.text.toString(), edit_email.text.toString(), edit_phone.text.toString()))
+                    edit_address.text.toString(),edit_pic.text.toString(), edit_email.text.toString(),
+                    edit_phone.text.toString(), ""))
                 //kikuldjuk az onSaveProfileClicked eventet, amit az activity kezel
                 notifySaveProfile.onSaveProfileClicked();
             }
